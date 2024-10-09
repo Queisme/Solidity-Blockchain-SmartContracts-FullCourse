@@ -20,23 +20,48 @@ contract SimpleStorage {
     // external - only visible externally (only for functions)
     // internal - only visible internally
 
-    uint256 public favoriteNumber; //defaults to internal so must add public if you want to see it
+    uint256 myFavoriteNumber; //defaults to internal so must add public if you want to see it or the call must be public to see it
+
+    //uint256[] listOfFavoriteNumbers; //[0, 7, 86, 90, 1110]
+    struct Person {
+        uint256 favoriteNumber;
+        string name;
+    }
+
+    // creating a list (or array) of Person(s)
+    // this is a dynamic array - because its size can shrink & grow without limit
+    Person[] public listOfPeople; // []
+
+    // this is a static array - this lists max size is 3
+    // Person[3] public listOfPeople;
+
+    //Person public pat = Person({favoriteNumber: 7, name: "Pat"});
+    //Person public mariah = Person({favoriteNumber: 13, name: "Mariah"});
+    //Person public jon = Person({favoriteNumber: 5, name: "Jon"});
+    //Person public que = Person({favoriteNumber: 1110, name: "Que"});
 
     //this function is updating something
     function store(uint256 _favoriteNumber) public {
-        favoriteNumber = _favoriteNumber;
+        myFavoriteNumber = _favoriteNumber;
     }
 
     // view, pure
+
     // view - a function marked view means we're going to read state from the blockchain
     //        and disallow updating state
     // pure - disallow updating state and they disallow reading from state or storage
+
     // // this view function is only reading from the blockchain & returning that
     function retrieve() public view returns (uint256) {
-        return favoriteNumber;
+        return myFavoriteNumber;
     }
+
     // // this pure function doesn't allow reading from state or storage
-    // function retrieve() public pure returns(uint256){
+    //function retrieve() public pure returns(uint256){
     //    return 1110;
     //}
+
+    function addPerson(string memory _name, uint256 _favoriteNumber) public {
+        listOfPeople.push(Person(_favoriteNumber, _name));
+    }
 }
