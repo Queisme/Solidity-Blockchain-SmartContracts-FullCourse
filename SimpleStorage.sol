@@ -74,7 +74,7 @@ contract SimpleStorage {
     // 1. Stack
     // 2. Memory - Temp variables that can be modified
     // 3. Storage - Permanent variables that can be modified
-    // 4. Calldata - Temp variables that cannot be modified
+    // 4. Calldata - Temp variables that CANNOT be modified
     // 5. Code
     // 6. Logs
 }
