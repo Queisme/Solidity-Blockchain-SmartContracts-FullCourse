@@ -1,3 +1,6 @@
 [submodule "RemixFundMe/lib/forge-std"]
 	path = RemixFundMe/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "FoundryFundamentals/lib/forge-std"]
+	path = FoundryFundamentals/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
